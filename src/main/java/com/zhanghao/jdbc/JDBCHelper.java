@@ -109,7 +109,7 @@ public class JDBCHelper {
             conn =getConnection();
             pstmt =conn.prepareStatement(sql);
             for(int i = 0;i < params.length;i++){
-                pstmt.setObject(i + 1,params[i]);
+                pstmt.setObject(i +1,params[i]);
             }
             rtn = pstmt.executeUpdate();
         }catch(Exception e){
@@ -169,6 +169,7 @@ public class JDBCHelper {
             pstmt=conn.prepareStatement(sql);
             for(Object[] objs :paramsList){
                 for(int i =0; i < objs.length; i++){
+//                    System.out.println(objs[i]);
                     pstmt.setObject(i+1,objs[i]);
                 }
                 //加入批量的参数

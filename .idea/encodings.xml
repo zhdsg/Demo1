@@ -3,8 +3,11 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/conf/ConfigurationManager.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/constants/Constants.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/dao/impl/Talk51DaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/domain/SchoolListJson.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/jdbc/JDBCHelper.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/program1/HouseOfLianJia.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/program1/SchoolSpecial.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/test/CH02_01.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/test/CH04_04.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zhanghao/test/Test1.java" charset="UTF-8" />

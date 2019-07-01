@@ -11,7 +11,7 @@ import java.io.IOException;
 public class JsoupUtil {
 
     public static Document getHTMLTextByUrl(String url ) throws IOException {
-        return Jsoup.connect(url).timeout(0).get();
+        return Jsoup.connect(url).timeout(500000).get();
     }
 
 

@@ -50,28 +50,40 @@ public class LianJiaDaoImpl implements LianJiaDao {
 
     public static void main(String[] args){
         try {
-            String[] citys =new String[]{"tj"};
+            String[] citys =new String[]{"qd"};
             // "sh","hz","cd","qd","bj"
 
             for(String str : citys) {
 
-
+                int j =5;
                 for (int i = 1; i <= 100; i++) {
+
                     StringBuilder url = new StringBuilder("https://"+str+".lianjia.com/ershoufang/");
                     if (i != 1) {
-                        url.append("/pg").append(i);
+                        url.append("pg").append(i);
                     }
 
+                     url.append("p").append(j);
+                    System.out.println(url.toString());
                     Document d = JsoupUtil.getHTMLTextByUrl(url.toString());
+
                     LianJiaDao lianJiaDao = new LianJiaDaoImpl();
                     //            List<CityUrl4LianJia> list = HouseOfLianJia.getCityUrl4LianJia(d);
 
                     //            lianJiaDao.insertCityUrl4LianJia(list);
                     List<HouseDetail4LianJia> list = HouseOfLianJia.getHouseDetail4LianJia(d);
-
+                    if(list.size()==0||i==100){
+                        j++;
+                        i=1;
+                    }
+                    if(j>7){
+                        break;
+                    }
+                    //System.out.println(list.toString());
                     lianJiaDao.insertHouseDetail4LianJia(list);
 
                     Thread.sleep(2000);
+
                 }
             }
         } catch (IOException e) {

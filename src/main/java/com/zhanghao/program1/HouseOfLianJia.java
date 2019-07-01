@@ -59,7 +59,7 @@ public class HouseOfLianJia {
 //            int len = houseInfo.length;
             int tmp=0;
             for(int i =0; i<houseInfo.length;i++){
-                if (houseInfo[i].contains("室")&&houseInfo[i].contains("厅")){
+                if (houseInfo[i].contains("室")&&houseInfo[i].contains("厅")||houseInfo[i].contains("车位")){
                     tmp =i;
                     break;
                 }
