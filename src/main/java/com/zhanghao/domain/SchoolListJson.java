@@ -48,21 +48,41 @@ public class SchoolListJson {
 
     public static void main(String[] args) {
         try {
-        int flag = 1;
-        while (flag!=0) {
-        String url ="https://api.eol.cn/gkcx/api/?access_token=&admissions=&central=&department=&dual_class=" +
-                "&f211=&f985=&is_dual_class=&keyword=&page=1&province_id=&request_type=1&school_type=" +
-                "&signsafe=&size=20&sort=view_total&type=&uri=apigkcx/api/school/hotlists";
+            int flag = 1;
+            int page=1;
+            int size=20;
+            double aaa=1001;
+            while (flag!=0) {
+
+                String url ="https://api.eol.cn/gkcx/api/?access_token=&admissions=&central=&department=&dual_class=" +
+                    "&f211=&f985=&is_dual_class=&keyword=&page="+page+"&province_id=&request_type=1&school_type=" +
+                    "&signsafe=&size="+size+"&sort=view_total&type=&uri=apigkcx/api/school/hotlists";
 
 
 
-            SchoolSpecial ss = new SchoolSpecial();
-            List<SchoolListJsonItem> list =ss.getScchoolList(url);
-            for(SchoolListJsonItem a :list){
-                System.out.println(a);
+                SchoolSpecial ss = new SchoolSpecial();
+                List<SchoolListJsonItem> list =ss.getScchoolList(url);
+                for(SchoolListJsonItem a :list){
+                    System.out.println(a);
 
-            }
-            int page  = (int) Math.floor(ss.getNumFound_list() / 20);
+                }
+                //计算一次page
+                if(flag==1){
+
+                    page  = (int) Math.floor((double)ss.getNumFound_list() / size);
+                }
+
+                Thread.sleep(2000);
+                System.out.println(flag);
+                page = (int) Math.ceil(aaa / size);
+                System.out.println(page);
+                if(flag*20 == page*20){
+                    break;
+                }
+                else {
+                    flag++;
+                }
+
 
         }
 

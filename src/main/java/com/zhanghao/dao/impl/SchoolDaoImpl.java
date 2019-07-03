@@ -5,6 +5,7 @@ import com.zhanghao.dao.SchoolDao;
 import com.zhanghao.domain.CityUrl4LianJia;
 import com.zhanghao.domain.HouseDetail4LianJia;
 import com.zhanghao.domain.SchoolGaoKao;
+import com.zhanghao.domain.SchoolListJsonItem;
 import com.zhanghao.jdbc.JDBCHelper;
 import com.zhanghao.program1.HouseOfLianJia;
 import com.zhanghao.uitls.JsoupUtil;
@@ -38,20 +39,19 @@ public class SchoolDaoImpl implements SchoolDao {
 
     }
 
-    public void insertHouseDetail4LianJia(List<SchoolGaoKao> list) {
-//        List<Object[]> objs = new ArrayList<Object[]>();
-//        String sql ="insert into house_detail (" +
-//                "title,url,xiaoqu,shihu,size,direction,style,lift,detail,address,tag,totalPrice,unitPrice" +
-//                ") values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//
-//        for(SchoolGaoKao hdlj : list){
-//            Object[] obj =new Object[]{
-//                    hdlj.getTitle(),hdlj.getUrl(),hdlj.getXiaoqu(),hdlj.getShihu(),hdlj.getSize(),hdlj.getDirection(),
-//                    hdlj.getStyle(), hdlj.getLift(),hdlj.getDetail(), hdlj.getAddress(),hdlj.getTag(),hdlj.getTotalPrice(),hdlj.getUnitPrice()};
-//            objs.add(obj);
-//        }
-//        jdbcHelper.executeBatch(sql,objs);
-
+    public void insertSchoolDetail(List<SchoolListJsonItem> list) {
+        List<Object[]> objs = new ArrayList<Object[]>();
+        String sql = "replace into school_gk (`average`,`batch`,`year`,`level1`,`level1_name`,`level2`,`level2_name`,`level3`,`level3_name`,`local_batch_name`,`max`,`min`" +
+                ",`min_section`,`province`,`remark`,`school_id`,`special_id`,`spid`,`spname`,`type`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        for(SchoolListJsonItem detail : list){
+            Object[] obj =new Object[]{detail.getAll()[0],detail.getBelong(),detail.getCentral()
+                    ,detail.getCity_id(), detail.getCity_name(),detail.getCode_enroll(),detail.getCounty_id(),detail.getCounty_name()
+                    ,detail.getData_code(),detail.getDepartment(),detail.getDual_class(),detail.getDual_class_name(),detail.getF211(),detail.getF985()
+                    ,detail.getId(), detail.getIs_recruitment(),detail.getKeywords()[0],detail.getIs_recruitment()
+            };
+            objs.add(obj);
+        }
+        jdbcHelper.executeBatch(sql,objs);
     }
 
 
